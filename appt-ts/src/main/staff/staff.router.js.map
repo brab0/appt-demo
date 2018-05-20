@@ -1,0 +1,1 @@
+{"version":3,"file":"staff.router.js","sourceRoot":"","sources":["staff.router.ts"],"names":[],"mappings":";;;;;;;;AAAA,qCAA2C;AAC3C,mCAAoC;AAapC,IAAa,WAAW,GAAxB;CAA2B,CAAA;AAAd,WAAW;IAXvB,oBAAa,CAAC;QACb,MAAM,EAAE;YACN,IAAI,EAAE,aAAO;YACb,MAAM,EAAE;gBACN,IAAI,EAAE,QAAQ;aACf;YACD,GAAG,EAAE;gBACH,mBAAmB;aACpB;SACF;KACF,CAAC;GACW,WAAW,CAAG;AAAd,kCAAW"}

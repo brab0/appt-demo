@@ -1,0 +1,26 @@
+{
+  "name": "appt-demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "api.main.module",
+  "scripts": {
+    "start": "nodemon ./src/api.main.module",
+    "test": "mocha --reporter spec --compilers ts:ts-node/register 'test/**/*.test.ts'"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "chai-http": "^3.0.0",
+    "mocha": "^3.1.2",
+    "ts-node": "^3.3.0",
+    "nodemon": "^1.17.3",
+    "typescript": "^2.0.6"
+  },
+  "dependencies": {
+    "@appt/api": "^1.0.19",
+    "@appt/core": "^1.0.19",
+    "@appt/mongoose": "^1.0.19"
+  }
+}

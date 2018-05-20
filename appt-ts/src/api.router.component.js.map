@@ -1,0 +1,1 @@
+{"version":3,"file":"api.router.component.js","sourceRoot":"","sources":["api.router.component.ts"],"names":[],"mappings":";;;;;;;;AAAA,qCAA2C;AAC3C,mCAAoC;AAapC,IAAa,kBAAkB,GAA/B;CAAkC,CAAA;AAArB,kBAAkB;IAX9B,oBAAa,CAAC;QACb,MAAM,EAAE;YACN,IAAI,EAAE,aAAO;YACb,MAAM,EAAE;gBACN,IAAI,EAAE,MAAM;aACb;YACD,GAAG,EAAE;gBACH,aAAa;aACd;SACF;KACF,CAAC;GACW,kBAAkB,CAAG;AAArB,gDAAkB"}

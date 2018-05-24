@@ -32,7 +32,7 @@ The video below shows the setup prompt to start an Appt Project. The @appt/cli b
 ## Contacts App
 Now the project base for our application is ready, lets get to work!
 
-First, lets remove the default generated log message of `MainModule` and create our database connector component called `ApiDatabase`:
+First, lets remove the default generated log message from `MainModule` and create our database connector component called `ApiDatabase`:
 ```javascript
 import { ApptComponent, TDatabase } from  '@appt/core';
 import { Mongoose } from  '@appt/mongoose';
@@ -46,7 +46,6 @@ import { Mongoose } from  '@appt/mongoose';
 		}
 	}
 })
-
 export class ApiDatabase {
 	constructor(config){
 		console.log(`Database running at ${config.uri}...`)
@@ -63,8 +62,7 @@ import { TServer } from  '@appt/api';
 		type:  TServer
 	}
 })
-
-export  class  ApiServer {
+export class ApiServer {
 	constructor(config){
 		console.log(`Server running at ${config.address.host}:${config.address.port}...`)
 	}
@@ -72,24 +70,18 @@ export  class  ApiServer {
 ```
 By default, Appt set the basic server configuration to the *host* as `localhost` and *port* to `3000`, which for this demo it's fine. If you want to override them, take a look to the `@appt/api` docs.
 
-Before execute our code, we need to make our `MainModule` class declare those components we just create to put them inside Appt's ecosystem:
+Before execute our code, we need to make sure `MainModule` class is declaring their components, in this case: `ApiDatabase` and `ApiServer`:
 
 ```javascript
-import {
-	ApptModule,
-	ApptBootstrap
-} from  '@appt/core';
-
+...
 @ApptModule({
 	declare: [
 		'ApiDatabase',
 		'ApiServer'
 	]
 })
-
-export  class  MainModule {}
-
-ApptBootstrap.module('MainModule');
+export class MainModule {}
+...
 ```
 
 Now, if you execute `npm start` now, you should see the messages: 

@@ -19,5 +19,3 @@ We also gonna need a **MongoDB** running to persist our data, which we recommend
 
 ### Usage
     $ appt init
-
-<iframe width="100%" height="400" src="https://www.youtube.com/embed/05583QPXGLg?rel=0&amp;showinfo=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>

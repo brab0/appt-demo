@@ -19,11 +19,79 @@ We also gonna need a **MongoDB** running to persist our data, which we recommend
 
 ### Usage
     $ appt init
-
+	
 The video below shows the setup prompt to start an Appt Project. The @appt/cli basically pass through the following steps:
  - define your **root path**;
  - generate your **package.json**,**** asks for your entry point file and class, where is the main source path to compile and where to put the built files.
  - which **dependencies** your project depends on. `@appt/core` is always needed, so it's implicit. But you will be prompt to choose if you want `@appt/mongoose` and `@appt/api` as well. For this demo we're gonna need both;
- - Finally, you may want to include into your project some **extra files** such .gitignore, README.md and a docker-compose.yml for a MongoDB container, which we also gonna need.
+ - You'll be asked if you want some **extra files** such .gitignore, README.md and a docker-compose.yml for a MongoDB container, which we also gonna need.
+ - Finally, the cli will generate the files needed, install the project's dependencies, and give you a main module for the entry point application.
 
 [![Watch the video](https://raw.githubusercontent.com/brab0/appt-demo/master/Screen%20Shot%202018-05-24%20at%2001.13.33.png)](https://www.youtube.com/embed/05583QPXGLg?rel=0&amp;showinfo=0)
+
+## Contacts App
+Now the project base for our application is ready, lets get to work!
+
+First, lets remove the default generated log message of `MainModule` and create our database connector component called `ApiDatabase`:
+```javascript
+import { ApptComponent, TDatabase } from  '@appt/core';
+import { Mongoose } from  '@appt/mongoose';
+
+@ApptComponent({
+	extend: {
+		type:  TDatabase,
+		use: [Mongoose],
+		config: {
+			uri:  'mongodb://localhost:27017/contacts'
+		}
+	}
+})
+
+export class ApiDatabase {
+	constructor(config){
+		console.log(`Database running at ${config.uri}...`)
+	}
+}
+```
+At this point, we have an entry point (`MainModule`) and a database component. We're gonna need a server as well. Lets create it!
+```javascript
+import { ApptComponent } from  '@appt/core';
+import { TServer } from  '@appt/api';
+
+@ApptComponent({
+	extend: {
+		type:  TServer
+	}
+})
+
+export  class  ApiServer {
+	constructor(config){
+		console.log(`Server running at ${config.address.host}:${config.address.port}...`)
+	}
+}
+```
+By default, Appt set the basic server configuration to the *host* as `localhost` and *port* to `3000`, which for this demo it's fine. If you want to override them, take a look to the `@appt/api` docs.
+
+Before execute our code, we need to make our `MainModule` class declare those components we just create to put them inside Appt's ecosystem:
+
+```javascript
+import {
+	ApptModule,
+	ApptBootstrap
+} from  '@appt/core';
+
+@ApptModule({
+	declare: [
+		'ApiDatabase',
+		'ApiServer'
+	]
+})
+
+export  class  MainModule {}
+
+ApptBootstrap.module('MainModule');
+```
+
+Now, if you execute `npm start` now, you should see the messages: 
+`Database running at mongodb://localhost:27017/contacts`
+`Server running at http://localhost:3000`

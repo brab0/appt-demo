@@ -7,10 +7,15 @@ We assume you got here after seeing the [Appt's Main Page](https://github.com/br
 In this tutorial we will cover some Appt's concepts through the building of a **REST Api** for a **Contacts** application. The main endpoints for *search, create, update and delete* a contact, must require authentication and the grant to access them, must be done by an admin's invitation, who must sign in to do them.
 
 ## Requirements
-Appt use some **ES7 features,** which are not implemented by the latest versions of node yet. That means to run Appt you must to configure your project to compile your code and `transform-decorators-legacy`. 
-We also gonna need a MongoDB Database running for persist our data, which we recommend you to use under a **Docker** container.
-To overcome all this starter steps and make your life easier, we're gonna use here the `@appt/cli`.
+To overcome some starter steps and make your life easier, we're gonna use `@appt/cli`, which counts with an assistant to setup your initial configurations. But feel free to set it up by your self if you wish.
+
+Appt use some **ES7 features,** which are not implemented by the latest versions of node yet. That means to run Appt you must to use a compiler (*we're going with babel*) and configure your project to `transform-decorators-legacy`. 
+
+We also gonna need a **MongoDB** running to persist our data, which we recommend you to use under a **Docker** container (*that's what we're gonna do*).
 
 ## Getting Started
 ### Installing @appt/cli
     $ npm install -g @appt/cli
+
+### Usage
+    $ appt init

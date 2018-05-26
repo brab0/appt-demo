@@ -4,7 +4,8 @@ This tutorial will guide you through a demo project building using **Appt Framew
 We assume you got here after seeing the [Appt's Main Page](https://github.com/brab0/appt). If you don't, **we strongly recommend** you to step back an take a 5 minutes reading to get used with some key concepts we're going to apply here.
 
 ## What we'll build
-In this tutorial we will cover some Appt's concepts through the building of a **REST Api** for a **Contacts** application. The main endpoints for *search, create, update and delete* a contact, must require authentication and the grant to access them, must be done by an admin's invitation, who must sign in to do them.
+In this tutorial we will build a **REST Api** for a **Contacts** application. The main endpoints for *search, create, update and delete* a contact, must require authentication and the grant to access them, must be done by an admin's invitation, who must sign in to do them.
+Our Api will use the main packages of **Appt's Framework**: [`@appt/core`](https://github.com/brab0/appt/tree/master/core), [`@appt/api`](https://github.com/brab0/appt/tree/master/api) and [`@appt/mongoose`](https://github.com/brab0/appt/tree/master/plugins/mongoose). You can use their docs to help you following this tutorial.
 
 ## Requirements
 To overcome some starter steps and make your life easier, we're gonna use `@appt/cli`, which counts with an assistant to setup your initial configurations. But feel free to set it up by your self if you wish.
@@ -29,10 +30,8 @@ The video below shows the setup prompt to start an Appt Project. The @appt/cli b
 
 [![Watch the video](https://raw.githubusercontent.com/brab0/appt-demo/master/Screen%20Shot%202018-05-24%20at%2001.13.33.png)](https://www.youtube.com/embed/05583QPXGLg?rel=0&amp;showinfo=0)
 
-## Contacts App
-Now the project base for our application is ready, lets get to work!
-
-First, lets remove the default generated log message from `MainModule` and create our database connector component called `ApiDatabase`:
+## Contacts Api
+If you have used `@appt/cli`, as shown above, and executed (`npm start`) the project, you might have seen an `Appt is up!` message. Which means, we're ready to move on. Lets just remove the default generated log from `MainModule` and create our database connector component called `ApiDatabase`:
 ```javascript
 import { ApptComponent, TDatabase } from  '@appt/core';
 import { Mongoose } from  '@appt/mongoose';
